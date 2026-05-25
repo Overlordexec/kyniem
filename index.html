@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kỷ Niệm Lớp Học ✨</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Pacifico&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #fdf6ec;
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --blush: #f2cfc4;
+    --rose: #c96b6b;
+    --ink: #1a1209;
+    --bark: #5c3d2e;
+    --mist: rgba(255,255,255,0.6);
+    --shadow: rgba(90,50,20,0.18);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--cream);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    color: var(--ink);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ─── NOISE TEXTURE OVERLAY ─── */
+  body::before {
+    content: '';
+    position: fixed; inset: 0; z-index: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    padding: 2rem;
+  }
+
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 20% 30%, #ffe8c8 0%, transparent 60%),
+      radial-gradient(ellipse 60% 70% at 80% 70%, #fad4d4 0%, transparent 55%),
+      radial-gradient(ellipse 50% 50% at 55% 10%, #fff3d0 0%, transparent 50%),
+      linear-gradient(160deg, #fdf0dc 0%, #fae4e4 50%, #fdf6ec 100%);
+    z-index: 0;
+  }
+
+  /* floating petals */
+  .petal {
+    position: absolute;
+    border-radius: 50% 0 50% 0;
+    opacity: 0;
+    animation: floatPetal linear infinite;
+  }
+  @keyframes floatPetal {
+    0%   { opacity: 0; transform: translateY(0) rotate(0deg) scale(0.6); }
+    10%  { opacity: 0.7; }
+    90%  { opacity: 0.4; }
+    100% { opacity: 0; transform: translateY(-110vh) rotate(720deg) scale(1.2); }
+  }
+
+  .hero-content { position: relative; z-index: 2; }
+
+  .hero-badge {
+    display: inline-block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.95rem; letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--bark);
+    border: 1px solid var(--gold);
+    padding: 0.4rem 1.4rem;
+    border-radius: 100px;
+    margin-bottom: 1.8rem;
+    background: rgba(255,255,255,0.5);
+    animation: fadeUp 1s ease both;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3.2rem, 9vw, 7rem);
+    font-weight: 900;
+    line-height: 1.05;
+    color: var(--ink);
+    animation: fadeUp 1s 0.2s ease both;
+  }
+  .hero-title span {
+    display: block;
+    font-style: italic;
+    background: linear-gradient(120deg, var(--gold), var(--rose), var(--gold-light));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-sub {
+    font-size: 1.3rem; font-style: italic; font-weight: 300;
+    color: var(--bark);
+    margin: 1.4rem auto;
+    max-width: 480px; line-height: 1.7;
+    animation: fadeUp 1s 0.4s ease both;
+  }
+
+  .hero-scroll {
+    position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+    animation: fadeUp 1s 1s ease both;
+    color: var(--bark); font-size: 0.8rem; letter-spacing: 0.2em;
+  }
+  .scroll-line {
+    width: 1px; height: 50px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+  @keyframes scrollPulse { 0%,100%{opacity:0.3;transform:scaleY(0.8)} 50%{opacity:1;transform:scaleY(1)} }
+
+  /* ─── ORNAMENT DIVIDER ─── */
+  .ornament {
+    text-align: center; padding: 3rem 0 1rem;
+    color: var(--gold); font-size: 1.6rem; letter-spacing: 0.5rem;
+  }
+
+  /* ─── SECTION ─── */
+  section { position: relative; z-index: 1; }
+
+  .section-header {
+    text-align: center; padding: 4rem 1rem 2rem;
+  }
+  .section-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3.4rem);
+    font-weight: 700; font-style: italic;
+    color: var(--ink);
+    position: relative; display: inline-block;
+  }
+  .section-header h2::after {
+    content: '';
+    display: block; margin: 0.7rem auto 0;
+    width: 60px; height: 2px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+  }
+  .section-header p {
+    margin-top: 0.8rem; color: var(--bark);
+    font-size: 1.1rem; font-style: italic;
+  }
+
+  /* ─── UPLOAD ZONE ─── */
+  .upload-section {
+    max-width: 700px; margin: 0 auto; padding: 0 1.5rem 5rem;
+  }
+
+  .upload-zone {
+    border: 2px dashed var(--gold);
+    border-radius: 24px;
+    background: rgba(255,255,255,0.55);
+    backdrop-filter: blur(8px);
+    padding: 3.5rem 2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    position: relative; overflow: hidden;
+  }
+  .upload-zone::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at center, rgba(201,168,76,0.08) 0%, transparent 70%);
+    opacity: 0; transition: opacity 0.4s;
+  }
+  .upload-zone:hover::before, .upload-zone.drag-over::before { opacity: 1; }
+  .upload-zone:hover, .upload-zone.drag-over {
+    border-color: var(--rose);
+    transform: translateY(-3px);
+    box-shadow: 0 20px 50px var(--shadow);
+  }
+
+  .upload-icon {
+    font-size: 3.5rem; margin-bottom: 1rem;
+    animation: floatIcon 3s ease-in-out infinite;
+  }
+  @keyframes floatIcon { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+
+  .upload-zone h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem; font-style: italic; color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+  .upload-zone p { color: var(--bark); font-size: 1rem; }
+  .upload-zone input { display: none; }
+
+  .upload-fields {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+    margin-top: 1.5rem;
+  }
+  .upload-fields input, .upload-fields textarea {
+    width: 100%; padding: 0.85rem 1.2rem;
+    border: 1px solid rgba(201,168,76,0.4);
+    border-radius: 12px;
+    background: rgba(255,255,255,0.7);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem; color: var(--ink);
+    outline: none; transition: border-color 0.3s, box-shadow 0.3s;
+  }
+  .upload-fields input:focus, .upload-fields textarea:focus {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(201,168,76,0.15);
+  }
+  .upload-fields textarea { grid-column: 1/-1; resize: vertical; min-height: 80px; }
+
+  .btn-upload {
+    margin-top: 1.2rem;
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    background: linear-gradient(135deg, var(--gold), var(--rose));
+    color: #fff; font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem; font-weight: 600; letter-spacing: 0.05em;
+    border: none; border-radius: 100px;
+    padding: 0.9rem 2.5rem; cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(201,168,76,0.35);
+  }
+  .btn-upload:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 35px rgba(201,168,76,0.45);
+  }
+
+  /* ─── GALLERY MASONRY ─── */
+  .gallery-section { padding: 0 1.5rem 6rem; }
+
+  .gallery-filters {
+    display: flex; flex-wrap: wrap; gap: 0.6rem;
+    justify-content: center; margin-bottom: 2.5rem;
+  }
+  .filter-btn {
+    padding: 0.45rem 1.3rem;
+    border-radius: 100px;
+    border: 1px solid rgba(201,168,76,0.5);
+    background: rgba(255,255,255,0.5);
+    color: var(--bark); font-family: 'Cormorant Garamond', serif;
+    font-size: 0.95rem; cursor: pointer; transition: all 0.3s;
+  }
+  .filter-btn.active, .filter-btn:hover {
+    background: linear-gradient(135deg, var(--gold), var(--rose));
+    color: #fff; border-color: transparent;
+  }
+
+  .gallery-grid {
+    columns: 3 280px; gap: 1.2rem;
+    max-width: 1200px; margin: 0 auto;
+  }
+
+  .memory-card {
+    break-inside: avoid;
+    margin-bottom: 1.2rem;
+    border-radius: 18px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    box-shadow: 0 6px 25px var(--shadow);
+    background: #fff;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s;
+    animation: cardIn 0.6s ease both;
+  }
+  @keyframes cardIn {
+    from { opacity: 0; transform: translateY(20px) scale(0.95); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  .memory-card:hover {
+    transform: translateY(-6px) scale(1.01);
+    box-shadow: 0 20px 50px rgba(90,50,20,0.25);
+  }
+  .memory-card img {
+    width: 100%; display: block;
+    transition: transform 0.6s ease;
+  }
+  .memory-card:hover img { transform: scale(1.04); }
+
+  .card-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(26,18,9,0.85) 0%, transparent 55%);
+    opacity: 0; transition: opacity 0.4s;
+    display: flex; flex-direction: column;
+    justify-content: flex-end; padding: 1.2rem;
+  }
+  .memory-card:hover .card-overlay { opacity: 1; }
+
+  .card-overlay .author {
+    font-size: 0.8rem; color: var(--gold-light); letter-spacing: 0.15em;
+    text-transform: uppercase; margin-bottom: 0.3rem;
+  }
+  .card-overlay .caption {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem; font-style: italic; color: #fff;
+    line-height: 1.4;
+  }
+  .card-overlay .date {
+    font-size: 0.8rem; color: rgba(255,255,255,0.55); margin-top: 0.4rem;
+  }
+
+  .card-tag {
+    position: absolute; top: 0.8rem; right: 0.8rem;
+    background: rgba(255,255,255,0.85);
+    border-radius: 100px; padding: 0.2rem 0.75rem;
+    font-size: 0.75rem; color: var(--bark); letter-spacing: 0.05em;
+  }
+
+  /* ─── POLAROID style for some cards ─── */
+  .polaroid {
+    background: #fff;
+    padding: 0.8rem 0.8rem 2.5rem;
+    box-shadow: 0 8px 30px rgba(90,50,20,0.2), 0 2px 6px rgba(90,50,20,0.1);
+    transform: rotate(-1.5deg);
+  }
+  .polaroid:nth-child(even) { transform: rotate(1.2deg); }
+  .polaroid:hover { transform: rotate(0deg) translateY(-6px) scale(1.02) !important; }
+  .polaroid .caption-below {
+    font-family: 'Pacifico', cursive; font-size: 0.85rem;
+    color: var(--bark); text-align: center; margin-top: 0.6rem;
+    padding: 0.3rem 0.5rem;
+  }
+
+  /* ─── LIGHTBOX ─── */
+  .lightbox {
+    position: fixed; inset: 0; z-index: 1000;
+    background: rgba(10,6,2,0.95);
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; pointer-events: none; transition: opacity 0.4s;
+    padding: 1.5rem;
+  }
+  .lightbox.open { opacity: 1; pointer-events: all; }
+  .lightbox-inner {
+    max-width: 900px; width: 100%;
+    display: grid; grid-template-columns: 1fr 300px;
+    gap: 2rem; align-items: center;
+  }
+  .lightbox-img-wrap {
+    border-radius: 20px; overflow: hidden;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+    transform: scale(0.9);
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  .lightbox.open .lightbox-img-wrap { transform: scale(1); }
+  .lightbox-img-wrap img { width: 100%; display: block; }
+
+  .lightbox-info { color: #fff; }
+  .lightbox-info .lb-author {
+    font-size: 0.8rem; letter-spacing: 0.25em; color: var(--gold-light);
+    text-transform: uppercase; margin-bottom: 0.8rem;
+  }
+  .lightbox-info .lb-caption {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem; font-style: italic; line-height: 1.4;
+    margin-bottom: 1rem;
+  }
+  .lightbox-info .lb-note {
+    font-size: 1rem; line-height: 1.7; color: rgba(255,255,255,0.7);
+  }
+  .lightbox-info .lb-date {
+    margin-top: 1.5rem; font-size: 0.8rem; color: rgba(255,255,255,0.4);
+    border-top: 1px solid rgba(255,255,255,0.15); padding-top: 1rem;
+  }
+  .lightbox-close {
+    position: absolute; top: 1.5rem; right: 1.5rem;
+    background: rgba(255,255,255,0.1); border: none; color: #fff;
+    width: 44px; height: 44px; border-radius: 50%;
+    font-size: 1.4rem; cursor: pointer; transition: background 0.3s;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .lightbox-close:hover { background: rgba(255,255,255,0.25); }
+
+  /* ─── TOAST ─── */
+  .toast {
+    position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(100px);
+    background: linear-gradient(135deg, var(--gold), var(--rose));
+    color: #fff; padding: 1rem 2rem; border-radius: 100px;
+    font-family: 'Cormorant Garamond', serif; font-size: 1.1rem;
+    box-shadow: 0 10px 30px rgba(201,168,76,0.4);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 2000;
+  }
+  .toast.show { transform: translateX(-50%) translateY(0); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    text-align: center; padding: 4rem 1rem;
+    background: linear-gradient(to top, rgba(90,50,20,0.06), transparent);
+    font-style: italic; color: var(--bark); font-size: 1rem; line-height: 1.8;
+  }
+  footer .footer-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem; font-style: italic;
+    background: linear-gradient(120deg, var(--gold), var(--rose));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    margin-bottom: 0.5rem;
+  }
+  footer .hearts { font-size: 1.4rem; letter-spacing: 0.4em; margin-top: 0.5rem; }
+
+  /* ─── STATS STRIP ─── */
+  .stats {
+    display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap;
+    padding: 3rem 1rem;
+    background: rgba(255,255,255,0.4); backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(201,168,76,0.2);
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+  }
+  .stat { text-align: center; }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem; font-weight: 900; color: var(--ink);
+    background: linear-gradient(120deg, var(--gold), var(--rose));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .stat-label { font-size: 0.85rem; color: var(--bark); letter-spacing: 0.15em; text-transform: uppercase; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .upload-fields { grid-template-columns: 1fr; }
+    .lightbox-inner { grid-template-columns: 1fr; }
+    .lightbox-info { display: none; }
+    .gallery-grid { columns: 2 160px; }
+  }
+  @media (max-width: 480px) {
+    .gallery-grid { columns: 1; }
+  }
+</style>
+</head>
+<body>
+
+<!-- FLOATING PETALS -->
+<div id="petals-container"></div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-badge">✦ Góc Lưu Giữ Kỷ Niệm ✦</div>
+    <h1 class="hero-title">
+      Những Tháng Ngày<br>
+      <span>Không Thể Quên</span>
+    </h1>
+    <p class="hero-sub">Nơi mỗi bức ảnh là một trang nhật ký, mỗi khoảnh khắc là một viên ngọc ký ức mãi mãi.</p>
+    <a href="#upload" class="btn-upload" style="text-decoration:none; margin-top:1rem;">
+      📷 Thêm Kỷ Niệm Của Bạn
+    </a>
+  </div>
+  <div class="hero-scroll">
+    <span style="letter-spacing:0.2em; font-size:0.75rem;">Cuộn xuống</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats" id="stats">
+  <div class="stat">
+    <div class="stat-num" id="photo-count">0</div>
+    <div class="stat-label">Bức Ảnh</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num" id="member-count">0</div>
+    <div class="stat-label">Thành Viên</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num" id="memory-count">0</div>
+    <div class="stat-label">Kỷ Niệm</div>
+  </div>
+</div>
+
+<!-- UPLOAD SECTION -->
+<section id="upload">
+  <div class="section-header">
+    <h2>Chia Sẻ Khoảnh Khắc</h2>
+    <p>Mỗi bức ảnh bạn chia sẻ là một món quà cho cả lớp</p>
+  </div>
+  <div class="upload-section">
+    <div class="upload-zone" id="uploadZone">
+      <div class="upload-icon">🌸</div>
+      <h3>Kéo & thả ảnh vào đây</h3>
+      <p>hoặc nhấn để chọn từ máy tính · JPG, PNG, WEBP · Tối đa 10MB</p>
+      <input type="file" id="fileInput" accept="image/*" multiple>
+    </div>
+    <div class="upload-fields">
+      <input type="text" id="authorName" placeholder="Tên của bạn ✨" />
+      <input type="text" id="photoTag" placeholder="Nhãn (vd: Picnic, Tốt nghiệp...)" />
+      <input type="text" id="photoTitle" placeholder="Tên kỷ niệm 🌼" style="grid-column:1/-1" />
+      <textarea id="photoNote" placeholder="Ghi lại cảm xúc của bạn về khoảnh khắc này... 💌"></textarea>
+    </div>
+    <div style="text-align:center">
+      <button class="btn-upload" onclick="handleUpload()">✨ Lưu Kỷ Niệm</button>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section>
+  <div class="ornament">✦ ✦ ✦</div>
+  <div class="section-header">
+    <h2>Album Ký Ức</h2>
+    <p>Những khoảnh khắc đẹp nhất của chúng ta</p>
+  </div>
+  <div class="gallery-section">
+    <div class="gallery-filters" id="filters">
+      <button class="filter-btn active" onclick="filterGallery('all', this)">Tất Cả</button>
+    </div>
+    <div class="gallery-grid" id="gallery"></div>
+    <div id="empty-state" style="text-align:center;padding:4rem 1rem;color:var(--bark);font-style:italic;font-size:1.2rem;display:none;">
+      <div style="font-size:3rem;margin-bottom:1rem;">🌷</div>
+      Chưa có kỷ niệm nào. Hãy là người đầu tiên chia sẻ!
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-title">Mãi Mãi Bên Nhau</div>
+  <p>Dù có đi đến đâu, chúng ta luôn có nhau trong tim.</p>
+  <div class="hearts">🌸 💛 🌼 💛 🌸</div>
+  <p style="margin-top:1.5rem; font-size:0.85rem; color:rgba(90,50,20,0.4);">Được tạo với yêu thương · Kỷ niệm lớp học</p>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <div class="lightbox-inner">
+    <div class="lightbox-img-wrap">
+      <img id="lb-img" src="" alt="">
+    </div>
+    <div class="lightbox-info">
+      <div class="lb-author" id="lb-author"></div>
+      <div class="lb-caption" id="lb-caption"></div>
+      <div class="lb-note" id="lb-note"></div>
+      <div class="lb-date" id="lb-date"></div>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast">✨ Kỷ niệm đã được lưu!</div>
+
+<script>
+// ─── PETALS ───
+const petalColors = ['#fad4d4','#fce4c0','#f7c9c9','#ffe8b0','#f5d0e0'];
+const container = document.getElementById('petals-container');
+for (let i = 0; i < 18; i++) {
+  const p = document.createElement('div');
+  p.className = 'petal';
+  const size = 8 + Math.random() * 16;
+  p.style.cssText = `
+    width:${size}px; height:${size * 0.7}px;
+    left:${Math.random() * 100}vw;
+    bottom:-${size}px;
+    background:${petalColors[Math.floor(Math.random()*petalColors.length)]};
+    animation-duration:${7 + Math.random() * 10}s;
+    animation-delay:${Math.random() * 12}s;
+    position:fixed; z-index:1; pointer-events:none;
+    border-radius:50% 0 50% 0;
+  `;
+  container.appendChild(p);
+}
+
+// ─── DATA ───
+let memories = JSON.parse(localStorage.getItem('classMemories') || '[]');
+let pendingFiles = [];
+
+// ─── SAMPLE DATA (if empty) ───
+const sampleData = [
+  {
+    id: 1,
+    src: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=600&q=80',
+    author: 'Minh Anh', title: 'Ngày Tốt Nghiệp', tag: 'Tốt nghiệp',
+    note: 'Khoảnh khắc đẹp nhất của 4 năm đại học!', date: '2024-06-15', polaroid: true
+  },
+  {
+    id: 2,
+    src: 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=80',
+    author: 'Tuấn Kiệt', title: 'Picnic Mùa Xuân', tag: 'Picnic',
+    note: 'Buổi dã ngoại mà ai cũng cười suốt.', date: '2024-03-20', polaroid: false
+  },
+  {
+    id: 3,
+    src: 'https://scontent.fsgn2-7.fna.fbcdn.net/v/t1.15752-9/705919437_1380794720763692_8699601620393616181_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=9f807c&_nc_ohc=y6MPH4LY8oMQ7kNvwGunGdQ&_nc_oc=AdrmlOWZehXIK_qUMYtulXouiR_W8WwY3vyWDeIOVo_grB6kbV_QfqDz1koIJeCW-Ik&_nc_zt=23&_nc_ht=scontent.fsgn2-7.fna&_nc_ss=7b2a8&oh=03_Q7cD5QHIbmDALzjjDyLj9dErbCvYfJv5TQC9F0aRDF_awJyL8Q&oe=6A3BCAD0',
+    author: 'Khôi', title: 'gặp ma', tag: 'Lễ hội',
+    note: 'châu gặp ma hahaha', date: '2026-05-25', polaroid: true
+  },
+];
+
+if (memories.length === 0) memories = sampleData;
+
+// ─── RENDER ───
+function renderGallery(filter = 'all') {
+  const grid = document.getElementById('gallery');
+  const empty = document.getElementById('empty-state');
+  const filtered = filter === 'all' ? memories : memories.filter(m => m.tag === filter);
+
+  if (filtered.length === 0) {
+    grid.innerHTML = '';
+    empty.style.display = 'block';
+    return;
+  }
+  empty.style.display = 'none';
+
+  grid.innerHTML = filtered.map((m, i) => `
+    <div class="memory-card ${m.polaroid ? 'polaroid' : ''}" style="animation-delay:${i * 0.07}s" onclick="openLightbox(${m.id})">
+      <img src="${m.src}" alt="${m.title}" loading="lazy" />
+      ${m.polaroid
+        ? `<div class="caption-below">${m.title}</div>`
+        : `<div class="card-overlay">
+            <div class="author">📸 ${m.author}</div>
+            <div class="caption">${m.title}</div>
+            <div class="date">${formatDate(m.date)}</div>
+          </div>`
+      }
+      <div class="card-tag">${m.tag}</div>
+    </div>
+  `).join('');
+
+  updateStats();
+  buildFilters();
+}
+
+function formatDate(dateStr) {
+  const d = new Date(dateStr);
+  return d.toLocaleDateString('vi-VN', { day:'2-digit', month:'long', year:'numeric' });
+}
+
+function buildFilters() {
+  const tags = [...new Set(memories.map(m => m.tag))];
+  const filters = document.getElementById('filters');
+  const active = filters.querySelector('.filter-btn.active')?.dataset?.tag || 'all';
+  filters.innerHTML = `<button class="filter-btn ${active==='all'?'active':''}" data-tag="all" onclick="filterGallery('all',this)">Tất Cả</button>`;
+  tags.forEach(t => {
+    filters.innerHTML += `<button class="filter-btn ${active===t?'active':''}" data-tag="${t}" onclick="filterGallery('${t}',this)">${t}</button>`;
+  });
+}
+
+function filterGallery(tag, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  renderGallery(tag);
+}
+
+function updateStats() {
+  const authors = [...new Set(memories.map(m => m.author))];
+  animateNum('photo-count', memories.length);
+  animateNum('member-count', authors.length);
+  animateNum('memory-count', memories.length);
+}
+
+function animateNum(id, target) {
+  const el = document.getElementById(id);
+  let cur = 0;
+  const step = Math.ceil(target / 30);
+  const t = setInterval(() => {
+    cur = Math.min(cur + step, target);
+    el.textContent = cur;
+    if (cur >= target) clearInterval(t);
+  }, 40);
+}
+
+// ─── LIGHTBOX ───
+function openLightbox(id) {
+  const m = memories.find(x => x.id === id);
+  if (!m) return;
+  document.getElementById('lb-img').src = m.src;
+  document.getElementById('lb-author').textContent = '📸 ' + m.author;
+  document.getElementById('lb-caption').textContent = m.title;
+  document.getElementById('lb-note').textContent = m.note || '';
+  document.getElementById('lb-date').textContent = formatDate(m.date);
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox(e) {
+  if (e && e.target !== document.getElementById('lightbox') && !e.target.classList.contains('lightbox-close')) return;
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') { document.getElementById('lightbox').classList.remove('open'); document.body.style.overflow = ''; } });
+
+// ─── UPLOAD ───
+const zone = document.getElementById('uploadZone');
+const fileInput = document.getElementById('fileInput');
+
+zone.addEventListener('click', () => fileInput.click());
+fileInput.addEventListener('change', e => handleFiles(e.target.files));
+
+zone.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('drag-over'); });
+zone.addEventListener('dragleave', () => zone.classList.remove('drag-over'));
+zone.addEventListener('drop', e => {
+  e.preventDefault(); zone.classList.remove('drag-over');
+  handleFiles(e.dataTransfer.files);
+});
+
+function handleFiles(files) {
+  pendingFiles = Array.from(files);
+  if (pendingFiles.length > 0) {
+    zone.querySelector('h3').textContent = `✅ Đã chọn ${pendingFiles.length} ảnh`;
+    zone.querySelector('p').textContent = 'Điền thông tin bên dưới rồi nhấn Lưu Kỷ Niệm';
+    zone.querySelector('.upload-icon').textContent = '🎉';
+  }
+}
+
+function handleUpload() {
+  const author = document.getElementById('authorName').value.trim() || 'Ẩn danh';
+  const tag = document.getElementById('photoTag').value.trim() || 'Kỷ niệm';
+  const title = document.getElementById('photoTitle').value.trim() || 'Khoảnh khắc đẹp';
+  const note = document.getElementById('photoNote').value.trim();
+
+  if (pendingFiles.length === 0) { showToast('⚠️ Vui lòng chọn ảnh trước!'); return; }
+
+  pendingFiles.forEach(file => {
+    const reader = new FileReader();
+    reader.onload = e => {
+      const m = {
+        id: Date.now() + Math.random(),
+        src: e.target.result,
+        author, tag, title, note,
+        date: new Date().toISOString().split('T')[0],
+        polaroid: Math.random() > 0.6
+      };
+      memories.unshift(m);
+      localStorage.setItem('classMemories', JSON.stringify(memories));
+      renderGallery();
+    };
+    reader.readAsDataURL(file);
+  });
+
+  // Reset
+  pendingFiles = [];
+  fileInput.value = '';
+  document.getElementById('authorName').value = '';
+  document.getElementById('photoTag').value = '';
+  document.getElementById('photoTitle').value = '';
+  document.getElementById('photoNote').value = '';
+  zone.querySelector('h3').textContent = 'Kéo & thả ảnh vào đây';
+  zone.querySelector('p').textContent = 'hoặc nhấn để chọn từ máy tính · JPG, PNG, WEBP · Tối đa 10MB';
+  zone.querySelector('.upload-icon').textContent = '🌸';
+
+  showToast('🌸 Kỷ niệm đã được lưu!');
+  setTimeout(() => { document.getElementById('gallery').scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 400);
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+// ─── INIT ───
+renderGallery();
+</script>
+</body>
+</html>
